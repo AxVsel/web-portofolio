@@ -60,7 +60,7 @@ export default function MyProject() {
         </h1>
       </div>
       <div className="flex flex-col justify-center items-center mt-5">
-        <div className="w-3/5">
+        <div className="w-full sm:w-4/5 md:w-3/5">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-10 p-4 justify-items-center">
             {projects.map((project, index) => (
               <ProjectCard key={index} {...project} />
