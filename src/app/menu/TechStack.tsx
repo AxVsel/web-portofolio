@@ -79,10 +79,10 @@ export default function TechStack() {
           >
             <LogoLoop
               logos={techLogos}
-              speed={120}
-              direction="left"
+              speed={110}
+              direction="right"
               logoHeight={50} // lebih kecil di HP
-              gap={60}
+              gap={65}
               pauseOnHover
               scaleOnHover
               fadeOut

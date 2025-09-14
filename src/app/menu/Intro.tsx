@@ -6,7 +6,7 @@ export default function Intro() {
     <>
       <div className="flex flex-wrap justify-center items-center mt-50 gap-8  p-8">
         <div
-          className="w-full max-w-[360px] sm:max-w-[360px] h-auto rounded-sm 
+          className="w-full max-w-[160px] sm:max-w-[260px] h-auto rounded-sm 
   shadow-xl shadow-red-500/40 
   hover:shadow-2xl hover:shadow-blue-500/60 transition duration-300 hover:scale-110"
         >
