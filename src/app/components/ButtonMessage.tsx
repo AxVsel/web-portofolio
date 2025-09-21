@@ -16,7 +16,7 @@ export default function ButtonMessage() {
 
       {/* Download CV Button */}
       <a
-        href="/cv.pdf"
+        href="/yaumilCV.pdf"
         download
         className="flex items-center justify-center gap-2 bg-white hover:bg-gray-100 text-gray-800 font-medium py-2 px-4 rounded-md shadow-sm border transition-all duration-200 text-sm md:text-base lg:text-lg w-full sm:w-auto"
       >
