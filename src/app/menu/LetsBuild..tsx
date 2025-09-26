@@ -15,7 +15,7 @@ export default function LetsBuild() {
             className="flex items-center gap-2 text-gray-600 hover:text-gray-800"
           >
             <img src="/emailAnimated.webp" alt="Email" className="h-8 w-8" />
-            assperacus77@gmail.com
+            yaumilaksah@gmail.com
           </a>
         </div>
       </div>
