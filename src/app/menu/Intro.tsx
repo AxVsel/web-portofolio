@@ -25,7 +25,7 @@ export default function Intro() {
 
           {/* Role */}
           <p className="text-xl sm:text-2xl font-semibold text-gray-600 text-center md:text-justify mt-2">
-            Junior Full-Stack Developer
+            Full-Stack Developer | Data Analist
           </p>
 
           {/* Deskripsi */}
