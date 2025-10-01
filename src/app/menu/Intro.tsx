@@ -30,7 +30,7 @@ export default function Intro() {
 
           {/* Deskripsi */}
           <p className="text-base sm:text-lg md:text-xl text-gray-600 leading-relaxed text-center md:text-justify mt-4">
-            I am a Junior Full-Stack Web Developer passionate about building web
+            I am a Full-Stack Web Developer passionate about building web
             applications from the ground up to production. I enjoy learning new
             technologies and focus on creating end-to-end solutions, from
             frontend to backend. With a strong eagerness to learn and grow, I am
@@ -42,7 +42,7 @@ export default function Intro() {
           {/* Lokasi */}
           <p className="flex items-center text-base sm:text-lg md:text-xl text-gray-600">
             <MapPin className="w-6 h-6 mr-2 text-red-600" />
-            Central Sulawesi, Poso Regency, Indonesia
+            Sleman Regency, Special Region of Yogyakarta, Indonesia
           </p>
           <div className="flex gap-4 mt-1">
             <a
