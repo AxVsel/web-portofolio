@@ -44,7 +44,7 @@ const projects = [
       "Google Ai Studio",
     ],
     repositoryType: "Private Repository",
-    demoLink: "#",
+    demoLink: "https://chatfilm-seven.vercel.app/",
   },
 ];
 
