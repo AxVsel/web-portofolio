@@ -2,7 +2,7 @@ import ProjectCard from "@/app/components/ProjectCard";
 
 const projects = [
   {
-    image: "/circleProject.jpg",
+    image: "/circleProject.png",
     title: "Circle",
     description:
       "Circle is a social platform that makes it easy to connect and share experiences effortlessly.",

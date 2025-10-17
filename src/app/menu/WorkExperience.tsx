@@ -62,6 +62,28 @@ export default function WorkExperience() {
       </div>
       <div className="p-6 bg-white  flex justify-center items-center">
         <ExperienceCard
+          logo="/gitsolution.png"
+          role="Intern Full Stack Web Developer"
+          company="PT GIT SOLUTION"
+          date="Sep 2023 - Des 2023"
+          points={[
+            "Online Full Stack Web Developer Internship Batch 9",
+            "Developed end-to-end web applications using EJS and Bootstrap for the frontend, and Express.js with Node.js for the backend",
+          ]}
+          techs={[
+            "Node.js",
+            "Express.js",
+            "Bootstrap",
+            "EJS",
+            "PostgreSql",
+            "Laragon",
+            "Typescript",
+            "Javascript",
+          ]}
+        />
+      </div>{" "}
+      <div className="p-6 bg-white  flex justify-center items-center">
+        <ExperienceCard
           logo="/company1.jpg"
           role="Internship Computer Technician"
           company="DigiParts"
