@@ -13,7 +13,7 @@ export default function WorkExperience() {
           logo="/dumbways.png"
           role="Talent Full Stack Web Developer"
           company="Dumbways Indonesia"
-          date="Nov 2024 - Sep 2025"
+          date="May 2024 - Oct 2025"
           points={[
             "Building scalable web applications using react",
             "Next.js",
