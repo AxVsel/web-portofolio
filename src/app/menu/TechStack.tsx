@@ -5,7 +5,6 @@ import {
   SiReact,
   SiNextdotjs,
   SiVuedotjs,
-  SiNuxt,
   SiNestjs,
   SiTypescript,
   SiJavascript,
@@ -38,10 +37,23 @@ import {
   Layers,
 } from "lucide-react";
 
+// Standalone Nuxt icon to avoid version discrepancy across different react-icons builds
+const NuxtIcon = () => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    width="1em"
+    height="1em"
+    className="inline-block"
+  >
+    <path d="M10.962 20.916l-4.52-7.828a.86.86 0 01.745-1.29h2.383a.86.86 0 01.745.43l3.652 6.326a.86.86 0 00.745.43h6.536a.86.86 0 00.745-1.29L13.844 3.43a.86.86 0 00-1.49 0L.148 20.056a.86.86 0 00.745 1.29h9.324a.86.86 0 00.745-.43z" />
+  </svg>
+);
+
 const techLogos = [
   { node: <SiReact />, title: "React", href: "https://react.dev" },
   { node: <SiNextdotjs />, title: "Next.js", href: "https://nextjs.org" },
-  { node: <SiNuxt />, title: "Nuxt 3", href: "https://nuxt.com" },
+  { node: <NuxtIcon />, title: "Nuxt 3", href: "https://nuxt.com" },
   { node: <SiVuedotjs />, title: "Vue 3", href: "https://vuejs.org" },
   { node: <SiTypescript />, title: "TypeScript", href: "https://www.typescriptlang.org" },
   { node: <SiPython />, title: "Python", href: "https://www.python.org" },
