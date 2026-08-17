@@ -3,7 +3,7 @@
 import { useTheme } from "./ThemeProvider";
 import { Gamepad2, Volume2, VolumeX, Sparkles } from "lucide-react";
 import { useEffect, useState } from "react";
-import { playClickSound } from "@/lib/retroAudio";
+
 
 export default function RetroToggle() {
   const { isRetro, toggleRetro, soundEnabled, toggleSound } = useTheme();
