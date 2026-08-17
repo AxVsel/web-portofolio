@@ -2,7 +2,9 @@
 
 import { useState } from "react";
 import ProjectCard, { ProjectCardProps } from "@/app/components/ProjectCard";
-import { FolderGit2 } from "lucide-react";
+import { FolderGit2, Gamepad } from "lucide-react";
+import { useTheme } from "@/components/ThemeProvider";
+import { playSelectSound, playCoinSound } from "@/lib/retroAudio";
 
 const allProjects: ProjectCardProps[] = [
   {
@@ -167,11 +169,19 @@ const categories = [
 
 export default function MyProject() {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
+  const { isRetro, openGame } = useTheme();
 
   const filteredProjects =
     selectedCategory === "All"
       ? allProjects
       : allProjects.filter((p) => p.category === selectedCategory);
+
+  const handleCategoryClick = (cat: string) => {
+    setSelectedCategory(cat);
+    if (isRetro) {
+      playCoinSound();
+    }
+  };
 
   return (
     <section id="MyProject" className="py-14 sm:py-18 md:py-20 bg-white dark:bg-gray-950 transition-colors duration-300">
@@ -179,14 +189,29 @@ export default function MyProject() {
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10">
           <span className="text-red-600 dark:text-red-500 font-semibold tracking-wider uppercase text-xs sm:text-sm flex items-center justify-center gap-1.5">
-            <FolderGit2 className="w-4 h-4" /> Portfolio Showcase
+            {isRetro ? <Gamepad className="w-4 h-4" /> : <FolderGit2 className="w-4 h-4" />}
+            {isRetro ? "★ ARCADE STAGES & TROPHIES ★" : "Portfolio Showcase"}
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 dark:text-gray-100 mt-2">
-            Featured Projects
+            {isRetro ? "ARCADE MISSIONS" : "Featured Projects"}
           </h2>
           <p className="text-gray-600 dark:text-gray-300 mt-2 sm:mt-3 text-xs sm:text-sm md:text-base">
-            A showcase of enterprise systems, web applications, computer vision models, and IoT hardware engineering.
+            {isRetro
+              ? "Select an arcade cartridge mission to view full stack software systems, computer vision AI, and embedded IoT gadgets."
+              : "A showcase of enterprise systems, web applications, computer vision models, and IoT hardware engineering."}
           </p>
+
+          {isRetro && (
+            <div className="mt-4 flex justify-center">
+              <button
+                onClick={openGame}
+                className="flex items-center gap-2 px-5 py-2 bg-amber-400 hover:bg-amber-300 text-black font-extrabold text-xs sm:text-sm border-3 border-black shadow-[4px_4px_0px_#000000] dark:bg-pink-600 dark:text-white dark:border-cyan-400 dark:shadow-[4px_4px_0px_#00ffff] active:translate-x-0.5 active:translate-y-0.5 transition-transform"
+              >
+                <Gamepad className="w-4 h-4" />
+                <span>🕹️ INSERT COIN - PLAY BUG HUNTER 1989</span>
+              </button>
+            </div>
+          )}
         </div>
 
         {/* Category Filters */}
@@ -194,14 +219,18 @@ export default function MyProject() {
           {categories.map((cat) => (
             <button
               key={cat}
-              onClick={() => setSelectedCategory(cat)}
-              className={`px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-medium rounded-full transition-all duration-200 ${
-                selectedCategory === cat
-                  ? "bg-red-600 text-white shadow-md shadow-red-600/20"
-                  : "bg-gray-100 dark:bg-gray-900 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-800 border border-gray-200 dark:border-gray-800"
+              onClick={() => handleCategoryClick(cat)}
+              className={`px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-medium transition-all duration-200 ${
+                isRetro
+                  ? selectedCategory === cat
+                    ? "bg-amber-400 text-black border-2 border-black shadow-[3px_3px_0px_#000] dark:bg-pink-600 dark:text-white dark:border-cyan-400 font-bold"
+                    : "bg-gray-100 dark:bg-gray-900 text-gray-700 dark:text-gray-300 border-2 border-black dark:border-gray-700 shadow-[2px_2px_0px_#000]"
+                  : selectedCategory === cat
+                  ? "bg-red-600 text-white shadow-md shadow-red-600/20 rounded-full"
+                  : "bg-gray-100 dark:bg-gray-900 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-800 border border-gray-200 dark:border-gray-800 rounded-full"
               }`}
             >
-              {cat}
+              {isRetro && selectedCategory === cat ? `▶ ${cat}` : cat}
             </button>
           ))}
         </div>

@@ -14,6 +14,14 @@ Modern, fast, and fully responsive personal portfolio website of **Muh Yaumil Ak
 
 ## ✨ Features
 
+- **🎮 8-Bit Retro Arcade Game Mode & Mini Game**:
+  - Interactive **8-BIT** toggle button in the navigation bar.
+  - 🕹️ **Playable Mini Game: "BUG HUNTER 1989"**: Complete canvas-based 8-bit space/bug shooter with keyboard and mobile touch controls, powerup coin drops, and local high score tracking.
+  - Authentic retro pixel fonts (**Press Start 2P** & **Pixelify Sans**).
+  - Pure Web Audio API synthesized 8-bit sound effects (*Coin, Power-Up, Laser, Explosion, Game Over*) with sound mute toggle.
+  - RPG Player HUD Stats (*HP, MP, Level 25, ATK/DEF/SPEED stats*).
+  - Gamified sections: *Item Inventory (Tech Stack)*, *Quest Log (Experience)*, *Arcade Cartridges (Projects)*, and *Guild Training (Education)*.
+  - CRT scanlines overlay effect.
 - **🌓 Dark Mode & Light Mode**:
   - Smooth theme switching with Sun & Moon animated toggle button.
   - Automatic system preference detection (`prefers-color-scheme`).

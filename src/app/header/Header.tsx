@@ -3,17 +3,20 @@
 import { useState } from "react";
 import ButtonMessage from "../components/ButtonMessage";
 import ThemeToggle from "@/components/ThemeToggle";
+import RetroToggle from "@/components/RetroToggle";
 import { Menu, X } from "lucide-react";
+import { useTheme } from "@/components/ThemeProvider";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const { isRetro } = useTheme();
 
   const navLinks = [
-    { href: "#TechStack", label: "Tech Stack" },
-    { href: "#experience", label: "Experience" },
-    { href: "#MyProject", label: "Projects" },
-    { href: "#education", label: "Education" },
-    { href: "#contact", label: "Contact" },
+    { href: "#TechStack", label: isRetro ? "⚔️ INVENTORY" : "Tech Stack" },
+    { href: "#experience", label: isRetro ? "📜 QUESTS" : "Experience" },
+    { href: "#MyProject", label: isRetro ? "🕹️ ARCADE" : "Projects" },
+    { href: "#education", label: isRetro ? "🏆 GUILD" : "Education" },
+    { href: "#contact", label: isRetro ? "💬 START" : "Contact" },
   ];
 
   return (
@@ -27,32 +30,34 @@ export default function Header() {
             className="w-9 h-9 sm:w-10 sm:h-10 object-contain group-hover:scale-105 transition-transform"
           />
           <span className="font-bold text-gray-900 dark:text-gray-100 text-base sm:text-lg tracking-tight">
-            Yaumil Aksah
+            {isRetro ? "PLAYER 1" : "Yaumil Aksah"}
           </span>
         </a>
 
         {/* Desktop & Tablet Navigation */}
-        <nav className="hidden md:flex items-center gap-3.5 lg:gap-6">
+        <nav className="hidden md:flex items-center gap-3 lg:gap-5">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="text-gray-600 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-500 transition-colors font-medium text-sm lg:text-base py-1"
+              className="text-gray-600 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-500 transition-colors font-medium text-xs lg:text-sm py-1"
             >
               {link.label}
             </a>
           ))}
 
-          {/* Theme Toggle */}
-          <div className="pl-1 lg:pl-2">
-            <ThemeToggle />
-          </div>
+          {/* 8-Bit Arcade Mode Switch */}
+          <RetroToggle />
+
+          {/* Light/Dark Mode Toggle */}
+          <ThemeToggle />
 
           <ButtonMessage />
         </nav>
 
         {/* Mobile Navigation Controls */}
-        <div className="md:hidden flex items-center gap-2">
+        <div className="md:hidden flex items-center gap-1.5">
+          <RetroToggle />
           <ThemeToggle />
           <button
             onClick={() => setIsOpen(!isOpen)}

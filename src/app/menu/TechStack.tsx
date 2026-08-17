@@ -1,6 +1,8 @@
 "use client";
 
 import LogoLoop from "@/components/LogoLoop";
+import { useTheme } from "@/components/ThemeProvider";
+import { playSelectSound } from "@/lib/retroAudio";
 import {
   SiReact,
   SiNextdotjs,
@@ -76,12 +78,14 @@ const techLogos = [
 const skillCategories = [
   {
     name: "Programming Languages",
+    retroName: "⚔️ WEAPONS (LANGUAGES)",
     icon: Code2,
     color: "text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/40 border-amber-200 dark:border-amber-800/60",
     skills: ["JavaScript", "TypeScript", "Python", "C", "C++", "HTML5", "CSS3"],
   },
   {
     name: "Frontend Development",
+    retroName: "🛡️ SHIELD & ARMOR (FRONTEND)",
     icon: Layers,
     color: "text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/40 border-blue-200 dark:border-blue-800/60",
     skills: [
@@ -99,6 +103,7 @@ const skillCategories = [
   },
   {
     name: "Backend & Databases",
+    retroName: "⚡ MANA & POTIONS (BACKEND)",
     icon: Server,
     color: "text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 border-emerald-200 dark:border-emerald-800/60",
     skills: [
@@ -118,6 +123,7 @@ const skillCategories = [
   },
   {
     name: "AI & Machine Learning",
+    retroName: "🔮 SPELLS & SUMMONS (AI/CV)",
     icon: BrainCircuit,
     color: "text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-purple-950/40 border-purple-200 dark:border-purple-800/60",
     skills: [
@@ -132,6 +138,7 @@ const skillCategories = [
   },
   {
     name: "Embedded Systems & IoT",
+    retroName: "🤖 GOLEMS & CHIPS (IoT)",
     icon: Cpu,
     color: "text-rose-600 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/40 border-rose-200 dark:border-rose-800/60",
     skills: [
@@ -147,6 +154,7 @@ const skillCategories = [
   },
   {
     name: "Tools, Cloud & DevOps",
+    retroName: "🧰 FORGE & CLOUD ARTIFACTS",
     icon: Wrench,
     color: "text-slate-600 dark:text-slate-400 bg-slate-50 dark:bg-slate-900/60 border-slate-200 dark:border-slate-800",
     skills: [
@@ -168,24 +176,34 @@ const skillCategories = [
 ];
 
 export default function TechStack() {
+  const { isRetro } = useTheme();
+
   return (
     <section id="TechStack" className="py-14 sm:py-18 md:py-20 bg-gray-50/70 dark:bg-gray-900/40 border-y border-gray-200 dark:border-gray-800 transition-colors duration-300">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
           <span className="text-red-600 dark:text-red-500 font-semibold tracking-wider uppercase text-xs sm:text-sm">
-            Technical Capabilities
+            {isRetro ? "★ SKILL TREE & SPELLBOOK ★" : "Technical Capabilities"}
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 dark:text-gray-100 mt-2">
-            Skills &amp; Tech Stack
+            {isRetro ? "ITEM INVENTORY" : "Skills & Tech Stack"}
           </h2>
           <p className="text-gray-600 dark:text-gray-300 mt-2 sm:mt-3 text-xs sm:text-sm md:text-base">
-            Comprehensive skill set across full-stack web development, AI/computer vision, and IoT embedded hardware.
+            {isRetro
+              ? "Equipped legendary abilities in Full-Stack development, AI/Computer Vision sorcery, and Embedded IoT hardware."
+              : "Comprehensive skill set across full-stack web development, AI/computer vision, and IoT embedded hardware."}
           </p>
         </div>
 
         {/* Logo Loop Carousel */}
-        <div className="w-full mb-8 sm:mb-12 overflow-hidden rounded-2xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 shadow-sm p-3 sm:p-4">
+        <div
+          className={`w-full mb-8 sm:mb-12 overflow-hidden bg-white dark:bg-gray-900 p-3 sm:p-4 transition-all ${
+            isRetro
+              ? "border-4 border-black dark:border-cyan-400 shadow-[5px_5px_0px_#000000] dark:shadow-[5px_5px_0px_#ff0055] rounded-none"
+              : "rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm"
+          }`}
+        >
           <LogoLoop
             logos={techLogos}
             speed={80}
@@ -207,14 +225,19 @@ export default function TechStack() {
             return (
               <div
                 key={index}
-                className="bg-white dark:bg-gray-900 rounded-2xl p-4 sm:p-5 lg:p-6 border border-gray-200 dark:border-gray-800 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1"
+                onClick={() => isRetro && playSelectSound()}
+                className={`p-4 sm:p-5 lg:p-6 transition-all duration-300 hover:-translate-y-1 ${
+                  isRetro
+                    ? "bg-white dark:bg-gray-900 border-3 border-black dark:border-cyan-400 shadow-[4px_4px_0px_#000000] dark:shadow-[4px_4px_0px_#ff0055] rounded-none cursor-pointer"
+                    : "bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm hover:shadow-md"
+                }`}
               >
                 <div className="flex items-center gap-3 mb-3 sm:mb-4">
                   <div className={`p-2 sm:p-2.5 rounded-xl border ${category.color}`}>
                     <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
                   </div>
                   <h3 className="text-base sm:text-lg font-bold text-gray-900 dark:text-gray-100">
-                    {category.name}
+                    {isRetro ? category.retroName : category.name}
                   </h3>
                 </div>
 
@@ -222,7 +245,11 @@ export default function TechStack() {
                   {category.skills.map((skill, sIdx) => (
                     <span
                       key={sIdx}
-                      className="px-2 sm:px-2.5 py-0.5 sm:py-1 text-[11px] sm:text-xs font-medium text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-800 hover:bg-red-50 dark:hover:bg-red-950/50 hover:text-red-600 dark:hover:text-red-400 hover:border-red-200 dark:hover:border-red-800/60 border border-transparent rounded-lg transition-colors"
+                      className={`px-2 sm:px-2.5 py-0.5 sm:py-1 text-[11px] sm:text-xs font-medium transition-colors ${
+                        isRetro
+                          ? "bg-amber-100 dark:bg-gray-800 text-black dark:text-cyan-300 border border-black dark:border-cyan-500/50 shadow-[1px_1px_0px_#000]"
+                          : "text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-800 hover:bg-red-50 dark:hover:bg-red-950/50 hover:text-red-600 dark:hover:text-red-400 border border-transparent rounded-lg"
+                      }`}
                     >
                       {skill}
                     </span>

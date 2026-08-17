@@ -123,3 +123,105 @@ html {
     @apply bg-background text-foreground;
   }
 }
+
+/* 👾 8-Bit Retro Game Mode Styling */
+.retro-mode {
+  --retro-border: #000000;
+  --retro-shadow: #000000;
+  --retro-accent: #ff0055;
+  --retro-gold: #ffcc00;
+  --retro-cyan: #00ffff;
+  --retro-green: #39ff14;
+}
+
+.dark.retro-mode,
+.retro-mode.dark {
+  --retro-border: #38bdf8;
+  --retro-shadow: #ff0055;
+}
+
+.retro-mode h1,
+.retro-mode h2,
+.retro-mode h3,
+.retro-mode .font-pixel-heading {
+  font-family: var(--font-press-start), monospace !important;
+  letter-spacing: -0.05em;
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.4);
+}
+
+.retro-mode p,
+.retro-mode span,
+.retro-mode a,
+.retro-mode button,
+.retro-mode li,
+.retro-mode div,
+.retro-mode .font-pixel-body {
+  font-family: var(--font-pixelify), var(--font-press-start), monospace;
+}
+
+.retro-mode .retro-card {
+  border: 3px solid #000000 !important;
+  box-shadow: 5px 5px 0px #000000 !important;
+  border-radius: 4px !important;
+  background-color: #ffffff;
+}
+
+.dark.retro-mode .retro-card,
+.retro-mode.dark .retro-card {
+  border: 3px solid #38bdf8 !important;
+  box-shadow: 5px 5px 0px #ff0055 !important;
+  background-color: #0f172a !important;
+}
+
+.retro-mode .retro-btn {
+  border: 2px solid #000000 !important;
+  box-shadow: 3px 3px 0px #000000 !important;
+  border-radius: 2px !important;
+  transition: all 0.1s ease-in-out;
+}
+
+.retro-mode .retro-btn:active {
+  transform: translate(3px, 3px) !important;
+  box-shadow: 0px 0px 0px transparent !important;
+}
+
+.dark.retro-mode .retro-btn,
+.retro-mode.dark .retro-btn {
+  border: 2px solid #38bdf8 !important;
+  box-shadow: 3px 3px 0px #ff0055 !important;
+}
+
+/* CRT Scanlines Overlay */
+.retro-mode::before {
+  content: " ";
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(
+      rgba(18, 16, 16, 0) 50%,
+      rgba(0, 0, 0, 0.12) 50%
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 0, 0, 0.02),
+      rgba(0, 255, 0, 0.01),
+      rgba(0, 0, 255, 0.02)
+    );
+  z-index: 9999;
+  background-size: 100% 3px, 4px 100%;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+@keyframes retro-blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+.retro-blink {
+  animation: retro-blink 1s infinite;
+}
+

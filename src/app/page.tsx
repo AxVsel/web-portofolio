@@ -6,6 +6,7 @@ import MyProject from "./menu/MyProject";
 import Education from "./menu/Education";
 import LetsBuild from "./menu/LetsBuild.";
 import Footer from "./header/Footrer";
+import RetroArcadeModal from "@/components/RetroArcadeModal";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
       <Education />
       <LetsBuild />
       <Footer />
+      <RetroArcadeModal />
     </main>
   );
 }

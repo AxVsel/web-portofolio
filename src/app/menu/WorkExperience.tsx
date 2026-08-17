@@ -1,8 +1,12 @@
+"use client";
+
 import ExperienceCard from "../components/ExperienceCard";
-import { Briefcase } from "lucide-react";
+import { Briefcase, Sword } from "lucide-react";
+import { useTheme } from "@/components/ThemeProvider";
 
 const experiences = [
   {
+    stage: "WORLD 3 - CURRENT MAIN BOSS QUEST",
     logo: "/unisia.webp",
     role: "Software Engineer",
     company: "PT Unisia Tera Medika (JIH Hospital)",
@@ -30,6 +34,7 @@ const experiences = [
     ],
   },
   {
+    stage: "WORLD 2 - SIDE QUEST COMPLETED",
     logo: "/gitsolution.png",
     role: "Intern Full Stack Developer",
     company: "PT GIT Solution (MoA Batch 9)",
@@ -48,6 +53,7 @@ const experiences = [
     ],
   },
   {
+    stage: "WORLD 1 - TUTORIAL DUNGEON CLEARED",
     logo: "/company1.jpg",
     role: "Computer Technician Intern",
     company: "Digiparts",
@@ -70,19 +76,24 @@ const experiences = [
 ];
 
 export default function WorkExperience() {
+  const { isRetro } = useTheme();
+
   return (
     <section id="experience" className="py-14 sm:py-18 md:py-20 bg-white dark:bg-gray-950 transition-colors duration-300">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
           <span className="text-red-600 dark:text-red-500 font-semibold tracking-wider uppercase text-xs sm:text-sm flex items-center justify-center gap-1.5">
-            <Briefcase className="w-4 h-4" /> Career Journey
+            {isRetro ? <Sword className="w-4 h-4" /> : <Briefcase className="w-4 h-4" />}
+            {isRetro ? "★ COMPLETED DUNGEONS & BOSSES ★" : "Career Journey"}
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 dark:text-gray-100 mt-2">
-            Work Experience
+            {isRetro ? "QUEST LOG" : "Work Experience"}
           </h2>
           <p className="text-gray-600 dark:text-gray-300 mt-2 sm:mt-3 text-xs sm:text-sm md:text-base">
-            Professional track record delivering enterprise hospital systems, full-stack solutions, and hardware maintenance.
+            {isRetro
+              ? "Chronological mission history building enterprise hospital platforms, full-stack systems, and hardware engineering."
+              : "Professional track record delivering enterprise hospital systems, full-stack solutions, and hardware maintenance."}
           </p>
         </div>
 
