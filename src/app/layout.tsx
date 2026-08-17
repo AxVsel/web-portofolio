@@ -13,12 +13,15 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Yaumil Aksah",
-  description: "My Portofolio App",
+  title: "Muh Yaumil Aksah Hamid | Software & Hardware Engineer",
+  description:
+    "Portfolio of Muh Yaumil Aksah Hamid - Software Engineer & Hardware Engineer specializing in modern frontend, backend, AI/Computer Vision, and IoT embedded systems.",
   icons: {
     icon: { url: "/yau.ico", type: "image/png" },
   },
 };
+
+import { ThemeProvider } from "@/components/ThemeProvider";
 
 export default function RootLayout({
   children,
@@ -26,11 +29,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-300`}
       >
-        {children}
+        <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
   );

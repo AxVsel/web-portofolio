@@ -1,112 +1,98 @@
 import ExperienceCard from "../components/ExperienceCard";
+import { Briefcase } from "lucide-react";
+
+const experiences = [
+  {
+    logo: "/unisia.webp",
+    role: "Software Engineer",
+    company: "PT Unisia Tera Medika (JIH Hospital)",
+    date: "Oct 2025 - Present",
+    points: [
+      "Developed and maintained Hospital Information System (SIMRS) modules using Nuxt 3, Vue 3, TypeScript, and Tailwind CSS.",
+      "Built reusable frontend components and composables to improve code maintainability and development efficiency.",
+      "Integrated frontend applications with GraphQL APIs using Apollo Client, including queries, mutations, and data management.",
+      "Developed pharmacy, cashier, billing, patient registration, and electronic prescription (E-Prescription) features for hospital operations.",
+      "Contributed to backend development using NestJS, implementing and maintaining Radiology module features and API endpoints.",
+      "Collaborated with backend engineers to design GraphQL schemas, troubleshoot API issues, and ensure seamless frontend-backend integration.",
+      "Participated in AI-related initiatives to support hospital digital transformation and intelligent healthcare workflows.",
+    ],
+    techs: [
+      "Nuxt 3",
+      "Vue 3",
+      "TypeScript",
+      "Tailwind CSS",
+      "GraphQL",
+      "Apollo Client",
+      "NestJS",
+      "Pinia",
+      "MariaDB",
+      "Healthcare AI",
+    ],
+  },
+  {
+    logo: "/gitsolution.png",
+    role: "Intern Full Stack Developer",
+    company: "PT GIT Solution (MoA Batch 9)",
+    date: "Sep 2023 - Dec 2023",
+    points: [
+      "Developed end-to-end web applications using EJS and Bootstrap for the frontend, and Express.js with Node.js for the backend.",
+      "Collaborated in agile team sprints to design RESTful API endpoints and implement dynamic server-rendered user interfaces.",
+    ],
+    techs: [
+      "Node.js",
+      "Express.js",
+      "Bootstrap",
+      "EJS",
+      "PostgreSQL",
+      "JavaScript",
+    ],
+  },
+  {
+    logo: "/company1.jpg",
+    role: "Computer Technician Intern",
+    company: "Digiparts",
+    date: "Jan 2019 - Mar 2019",
+    points: [
+      "Performed routine maintenance and repair for computers and laptops.",
+      "Diagnosed and resolved hardware and software issues.",
+      "Installed and configured operating systems, drivers, and applications.",
+      "Conducted data backup, recovery, and system optimization.",
+      "Ensured devices operated efficiently and securely for end users.",
+    ],
+    techs: [
+      "Hardware Maintenance & Repair",
+      "OS & Driver Configuration",
+      "Troubleshooting",
+      "Data Recovery",
+      "System Optimization",
+    ],
+  },
+];
 
 export default function WorkExperience() {
   return (
-    <>
-      <div id="experience" className="mt-20">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl  font-bold text-gray-600 leading-tight text-center">
-          Work Experience
-        </h1>
+    <section id="experience" className="py-14 sm:py-18 md:py-20 bg-white dark:bg-gray-950 transition-colors duration-300">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
+          <span className="text-red-600 dark:text-red-500 font-semibold tracking-wider uppercase text-xs sm:text-sm flex items-center justify-center gap-1.5">
+            <Briefcase className="w-4 h-4" /> Career Journey
+          </span>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 dark:text-gray-100 mt-2">
+            Work Experience
+          </h2>
+          <p className="text-gray-600 dark:text-gray-300 mt-2 sm:mt-3 text-xs sm:text-sm md:text-base">
+            Professional track record delivering enterprise hospital systems, full-stack solutions, and hardware maintenance.
+          </p>
+        </div>
+
+        {/* Experience List */}
+        <div className="space-y-4 sm:space-y-6">
+          {experiences.map((exp, index) => (
+            <ExperienceCard key={index} {...exp} />
+          ))}
+        </div>
       </div>
-      <div className="p-6 bg-white  flex justify-center items-center">
-        <ExperienceCard
-          logo="/dumbways.png"
-          role="Talent Full Stack Web Developer"
-          company="Dumbways Indonesia"
-          date="May 2024 - Oct 2025"
-          points={[
-            "Building scalable web applications using react",
-            "Next.js",
-            "Node.js and Express.js",
-            "Writing clean maintainable efficient code in Javascript and Typescript",
-            "Collaborating in team projects code reviews and workflows",
-            "Solving real-world case studies to sharpen problem-solving skills",
-            "Preparing for technical interviews and industry-level assessments",
-          ]}
-          techs={[
-            "Node.js",
-            "Express.js",
-            "PostgreSql",
-            "React.js",
-            "Next.js",
-            "Typescript",
-            "Javascript",
-          ]}
-        />
-      </div>{" "}
-      <div className="p-6 bg-white  flex justify-center items-center">
-        <ExperienceCard
-          logo="/campuslogo.jpg"
-          role=" Bachelor of Informatics Engineering"
-          company="University Amikom of Yogyakarta"
-          date="May 2024 - Aug 2024"
-          points={[
-            "IMPLEMENTATION OF THE YOLO ALGORITHM ON LETTERS OF THE INDONESIAN SIGN LANGUAGE SYSTEM (SIBI), (Thesis)",
-            "Designed an object detection system for Indonesian Sign Language (SIBI).",
-            "Utilized Roboflow for dataset annotation and labeling.",
-            "Trained the dataset using Google Colab with GPU acceleration.",
-            "Monitored and analyzed training results using CometML.",
-            "Deployed and tested the trained model on Android devices.",
-          ]}
-          techs={[
-            "Python",
-            "Java",
-            "Android Studio",
-            "Roboflow",
-            "PyTorch",
-            "CometML",
-            "YOLOv5",
-            "Google Colaboratory",
-          ]}
-        />
-      </div>
-      <div className="p-6 bg-white  flex justify-center items-center">
-        <ExperienceCard
-          logo="/gitsolution.png"
-          role="Intern Full Stack Web Developer"
-          company="PT GIT SOLUTION"
-          date="Sep 2023 - Des 2023"
-          points={[
-            "Online Full Stack Web Developer Internship Batch 9",
-            "Developed end-to-end web applications using EJS and Bootstrap for the frontend, and Express.js with Node.js for the backend",
-          ]}
-          techs={[
-            "Node.js",
-            "Express.js",
-            "Bootstrap",
-            "EJS",
-            "PostgreSql",
-            "Laragon",
-            "Typescript",
-            "Javascript",
-          ]}
-        />
-      </div>{" "}
-      <div className="p-6 bg-white  flex justify-center items-center">
-        <ExperienceCard
-          logo="/company1.jpg"
-          role="Internship Computer Technician"
-          company="DigiParts"
-          date="Jan 2019 - Mar 2019"
-          points={[
-            " Perform routine maintenance and repair for computers and laptops",
-            "Diagnose and troubleshoot hardware and software issues",
-            "Install and configure operating systems, drivers, and applications",
-            "Provide data backup, recovery, and system optimization",
-            "Ensure devices run efficiently and securely for end users",
-          ]}
-          techs={[
-            "Windows OS",
-            "Linux",
-            "Hardware Repair",
-            "Software Troubleshooting",
-            "Networking",
-            "Data Recovery",
-            "Microsoft Office",
-            "Printer Setup",
-          ]}
-        />
-      </div>
-    </>
+    </section>
   );
 }

@@ -1,30 +1,52 @@
+import { Github, Linkedin, Mail } from "lucide-react";
+
 export default function Footer() {
   return (
-    <footer className="border-t border-black text-gray-600 py-6 flex flex-col items-center gap-2">
-      <p className="text-sm text-center">
-        © 2025 Designed and coded with <span className="text-red-500">❤️</span>{" "}
-        by Yaumil Aksah
-      </p>
-      <div className="flex gap-4 mt-1">
-        {/* GitHub */}
-        <a
-          href="https://github.com/username"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:text-white transition-colors"
-        >
-          <img src="/github.svg" alt="Email" className="h-5 w-5" />
-        </a>
+    <footer className="bg-white dark:bg-gray-950 border-t border-gray-200 dark:border-gray-800 text-gray-600 dark:text-gray-400 py-6 sm:py-8 transition-colors duration-300">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+        {/* Author Info */}
+        <div className="text-center sm:text-left">
+          <p className="text-xs sm:text-sm font-semibold text-gray-900 dark:text-gray-200">
+            Muh Yaumil Aksah Hamid
+          </p>
+          <p className="text-[11px] sm:text-xs text-gray-500 dark:text-gray-400 mt-0.5">
+            Software Engineer &amp; Hardware Engineer
+          </p>
+        </div>
 
-        {/* LinkedIn */}
-        <a
-          href="https://linkedin.com/in/username"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:text-white transition-colors"
-        >
-          <img src="/link.svg" alt="Email" className="h-5 w-5" />
-        </a>
+        {/* Credits */}
+        <p className="text-[11px] sm:text-xs text-center text-gray-500 dark:text-gray-400">
+          © {new Date().getFullYear()} Designed &amp; built with <span className="text-red-500">❤️</span> by Yaumil Aksah.
+        </p>
+
+        {/* Social Icons */}
+        <div className="flex items-center gap-2 sm:gap-3">
+          <a
+            href="https://github.com/AxVsel"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2 text-gray-500 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-400 hover:bg-gray-100 dark:hover:bg-gray-850 rounded-xl transition-colors"
+            title="GitHub"
+          >
+            <Github className="w-4 h-4" />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/yaumil-aksah/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2 text-gray-500 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-400 hover:bg-gray-100 dark:hover:bg-gray-850 rounded-xl transition-colors"
+            title="LinkedIn"
+          >
+            <Linkedin className="w-4 h-4" />
+          </a>
+          <a
+            href="mailto:yaumilaksah@gmail.com"
+            className="p-2 text-gray-500 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-400 hover:bg-gray-100 dark:hover:bg-gray-850 rounded-xl transition-colors"
+            title="Email"
+          >
+            <Mail className="w-4 h-4" />
+          </a>
+        </div>
       </div>
     </footer>
   );
