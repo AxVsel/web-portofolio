@@ -24,20 +24,16 @@ import {
   SiOpencv,
   SiArduino,
   SiDocker,
+  SiN8N,
+  SiRailway,
+  SiPhp,
   SiGit,
   SiGithub,
   SiPostman,
   SiFigma,
   SiVercel,
 } from "react-icons/si";
-import {
-  Code2,
-  Server,
-  BrainCircuit,
-  Cpu,
-  Wrench,
-  Layers,
-} from "lucide-react";
+import { Code2, Server, BrainCircuit, Cpu, Wrench, Layers } from "lucide-react";
 
 // Standalone Nuxt icon to avoid version discrepancy across different react-icons builds
 const NuxtIcon = () => (
@@ -57,22 +53,51 @@ const techLogos = [
   { node: <SiNextdotjs />, title: "Next.js", href: "https://nextjs.org" },
   { node: <NuxtIcon />, title: "Nuxt 3", href: "https://nuxt.com" },
   { node: <SiVuedotjs />, title: "Vue 3", href: "https://vuejs.org" },
-  { node: <SiTypescript />, title: "TypeScript", href: "https://www.typescriptlang.org" },
+  {
+    node: <SiTypescript />,
+    title: "TypeScript",
+    href: "https://www.typescriptlang.org",
+  },
+  {
+    node: <SiJavascript />,
+    title: "JavaScript",
+    href: "https://www.javascripttutorial.net",
+  },
   { node: <SiPython />, title: "Python", href: "https://www.python.org" },
   { node: <SiCplusplus />, title: "C / C++", href: "https://isocpp.org" },
   { node: <SiNestjs />, title: "NestJS", href: "https://nestjs.com" },
   { node: <SiNodedotjs />, title: "Node.js", href: "https://nodejs.org" },
   { node: <SiExpress />, title: "Express.js", href: "https://expressjs.com" },
   { node: <SiGraphql />, title: "GraphQL", href: "https://graphql.org" },
-  { node: <SiPostgresql />, title: "PostgreSQL", href: "https://www.postgresql.org" },
+  {
+    node: <SiPostgresql />,
+    title: "PostgreSQL",
+    href: "https://www.postgresql.org",
+  },
   { node: <SiMariadb />, title: "MariaDB", href: "https://mariadb.org" },
   { node: <SiRedis />, title: "Redis", href: "https://redis.io" },
   { node: <SiSupabase />, title: "Supabase", href: "https://supabase.com" },
   { node: <SiPytorch />, title: "PyTorch", href: "https://pytorch.org" },
   { node: <SiOpencv />, title: "OpenCV", href: "https://opencv.org" },
-  { node: <SiArduino />, title: "Arduino / ESP32", href: "https://www.arduino.cc" },
+  {
+    node: <SiArduino />,
+    title: "Arduino / ESP32",
+    href: "https://www.arduino.cc",
+  },
+  { node: <SiFigma />, title: "Figma", href: "https://www.figma.com" },
+  { node: <SiPostman />, title: "Postman", href: "https://www.postman.com" },
+  { node: <SiPhp />, title: "PHP", href: "https://www.php.net" },
+  { node: <SiGit />, title: "Git", href: "https://git-scm.com" },
+  { node: <SiN8N />, title: "n8n", href: "https://n8n.io" },
+  { node: <SiRailway />, title: "Railway", href: "https://railway.app" },
+  { node: <SiVercel />, title: "Vercel", href: "https://vercel.com" },
+  { node: <SiGithub />, title: "GitHub", href: "https://github.com" },
   { node: <SiDocker />, title: "Docker", href: "https://www.docker.com" },
-  { node: <SiTailwindcss />, title: "Tailwind CSS", href: "https://tailwindcss.com" },
+  {
+    node: <SiTailwindcss />,
+    title: "Tailwind CSS",
+    href: "https://tailwindcss.com",
+  },
 ];
 
 const skillCategories = [
@@ -80,14 +105,26 @@ const skillCategories = [
     name: "Programming Languages",
     retroName: "⚔️ WEAPONS (LANGUAGES)",
     icon: Code2,
-    color: "text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/40 border-amber-200 dark:border-amber-800/60",
-    skills: ["JavaScript", "TypeScript", "Python", "C", "C++", "HTML5", "CSS3"],
+    color:
+      "text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/40 border-amber-200 dark:border-amber-800/60",
+    skills: [
+      "JavaScript",
+      "TypeScript",
+      "Java",
+      "PHP",
+      "Python",
+      "C",
+      "C++",
+      "HTML5",
+      "CSS3",
+    ],
   },
   {
     name: "Frontend Development",
     retroName: "🛡️ SHIELD & ARMOR (FRONTEND)",
     icon: Layers,
-    color: "text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/40 border-blue-200 dark:border-blue-800/60",
+    color:
+      "text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/40 border-blue-200 dark:border-blue-800/60",
     skills: [
       "Vue.js",
       "Nuxt.js (Nuxt 3)",
@@ -105,7 +142,8 @@ const skillCategories = [
     name: "Backend & Databases",
     retroName: "⚡ MANA & POTIONS (BACKEND)",
     icon: Server,
-    color: "text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 border-emerald-200 dark:border-emerald-800/60",
+    color:
+      "text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 border-emerald-200 dark:border-emerald-800/60",
     skills: [
       "Node.js",
       "NestJS",
@@ -125,7 +163,8 @@ const skillCategories = [
     name: "AI & Machine Learning",
     retroName: "🔮 SPELLS & SUMMONS (AI/CV)",
     icon: BrainCircuit,
-    color: "text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-purple-950/40 border-purple-200 dark:border-purple-800/60",
+    color:
+      "text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-purple-950/40 border-purple-200 dark:border-purple-800/60",
     skills: [
       "PyTorch",
       "YOLOv5",
@@ -140,7 +179,8 @@ const skillCategories = [
     name: "Embedded Systems & IoT",
     retroName: "🤖 GOLEMS & CHIPS (IoT)",
     icon: Cpu,
-    color: "text-rose-600 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/40 border-rose-200 dark:border-rose-800/60",
+    color:
+      "text-rose-600 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/40 border-rose-200 dark:border-rose-800/60",
     skills: [
       "ESP32",
       "ESP32-CAM",
@@ -156,7 +196,8 @@ const skillCategories = [
     name: "Tools, Cloud & DevOps",
     retroName: "🧰 FORGE & CLOUD ARTIFACTS",
     icon: Wrench,
-    color: "text-slate-600 dark:text-slate-400 bg-slate-50 dark:bg-slate-900/60 border-slate-200 dark:border-slate-800",
+    color:
+      "text-slate-600 dark:text-slate-400 bg-slate-50 dark:bg-slate-900/60 border-slate-200 dark:border-slate-800",
     skills: [
       "Git & GitHub",
       "Docker",
@@ -179,7 +220,10 @@ export default function TechStack() {
   const { isRetro } = useTheme();
 
   return (
-    <section id="TechStack" className="py-14 sm:py-18 md:py-20 bg-gray-50/70 dark:bg-gray-900/40 border-y border-gray-200 dark:border-gray-800 transition-colors duration-300">
+    <section
+      id="TechStack"
+      className="py-14 sm:py-18 md:py-20 bg-gray-50/70 dark:bg-gray-900/40 border-y border-gray-200 dark:border-gray-800 transition-colors duration-300"
+    >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
@@ -233,7 +277,9 @@ export default function TechStack() {
                 }`}
               >
                 <div className="flex items-center gap-3 mb-3 sm:mb-4">
-                  <div className={`p-2 sm:p-2.5 rounded-xl border ${category.color}`}>
+                  <div
+                    className={`p-2 sm:p-2.5 rounded-xl border ${category.color}`}
+                  >
                     <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
                   </div>
                   <h3 className="text-base sm:text-lg font-bold text-gray-900 dark:text-gray-100">

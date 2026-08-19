@@ -29,7 +29,14 @@ const educations: EducationItem[] = [
       "Completed academic projects related to system development and integration: Traffic Light Simulation (IoT, AVR + Proteus), Smart Door (IoT, ESP32-CAM + Blynk facial authentication), Face Mask Detection (AI, YOLOv5 + PyTorch, >80% accuracy), and SIBI Sign Language Detection (Thesis, YOLOv5, 1,200-image dataset).",
       "Developed strong problem-solving, teamwork, and research skills through collaborative coursework and assignments.",
     ],
-    skills: ["AI / Computer Vision", "IoT & Embedded", "YOLOv5", "PyTorch", "Python", "Networking"],
+    skills: [
+      "AI / Computer Vision",
+      "IoT & Embedded",
+      "YOLOv5",
+      "PyTorch",
+      "Python",
+      "Networking",
+    ],
   },
   {
     type: "Formal Education",
@@ -39,13 +46,21 @@ const educations: EducationItem[] = [
     logo: "/vocational.png",
     xp: "+30,000 EXP (LKS MEDALIST)",
     points: [
-      "Specialized in web development and software using JavaScript, HTML, CSS, and Visual Basic.",
+      "Specialized in web development and software using JavaScript, Java, PHP, HTML, CSS, and Visual Basic.",
       "Completed an internship as a computer and laptop service technician.",
     ],
     achievements: [
       "🏆 Achieved 2nd place in the LKS (Lomba Kompetensi Siswa) competition, IT Software Solution for Business category.",
     ],
-    skills: ["Web Development", "JavaScript", "HTML/CSS", "Visual Basic", "Hardware Servicing"],
+    skills: [
+      "Web Development",
+      "JavaScript",
+      "Java",
+      "PHP",
+      "HTML/CSS",
+      "Visual Basic",
+      "Hardware Servicing",
+    ],
   },
   {
     type: "Non-Formal Education",
@@ -59,7 +74,15 @@ const educations: EducationItem[] = [
       "Developed and deployed real-world projects following best practices in frontend and backend development.",
       "Gained hands-on experience with API development, authentication, database management, and deployment.",
     ],
-    skills: ["React.js", "TypeScript", "Node.js", "Prisma ORM", "PostgreSQL", "REST API", "Full Stack"],
+    skills: [
+      "React.js",
+      "TypeScript",
+      "Node.js",
+      "Prisma ORM",
+      "PostgreSQL",
+      "REST API",
+      "Full Stack",
+    ],
   },
 ];
 
@@ -67,13 +90,22 @@ export default function Education() {
   const { isRetro } = useTheme();
 
   return (
-    <section id="education" className="py-14 sm:py-18 md:py-20 bg-gray-50/70 dark:bg-gray-900/40 border-y border-gray-200 dark:border-gray-800 transition-colors duration-300">
+    <section
+      id="education"
+      className="py-14 sm:py-18 md:py-20 bg-gray-50/70 dark:bg-gray-900/40 border-y border-gray-200 dark:border-gray-800 transition-colors duration-300"
+    >
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
           <span className="text-red-600 dark:text-red-500 font-semibold tracking-wider uppercase text-xs sm:text-sm flex items-center justify-center gap-1.5">
-            {isRetro ? <Medal className="w-4 h-4" /> : <GraduationCap className="w-4 h-4" />}
-            {isRetro ? "★ ACADEMIC GUILD & CERTIFICATES ★" : "Academic & Certifications"}
+            {isRetro ? (
+              <Medal className="w-4 h-4" />
+            ) : (
+              <GraduationCap className="w-4 h-4" />
+            )}
+            {isRetro
+              ? "★ ACADEMIC GUILD & CERTIFICATES ★"
+              : "Academic & Certifications"}
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 dark:text-gray-100 mt-2">
             {isRetro ? "GUILD TRAINING" : "Education & Training"}
@@ -185,7 +217,10 @@ export default function Education() {
                   }`}
                 >
                   {item.achievements.map((ach, aIdx) => (
-                    <p key={aIdx} className="text-xs sm:text-sm font-bold flex items-center gap-2">
+                    <p
+                      key={aIdx}
+                      className="text-xs sm:text-sm font-bold flex items-center gap-2"
+                    >
                       <Award className="w-4 h-4 shrink-0" />
                       {ach}
                     </p>

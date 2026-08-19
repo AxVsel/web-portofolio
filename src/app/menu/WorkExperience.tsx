@@ -47,6 +47,7 @@ const experiences = [
       "Node.js",
       "Express.js",
       "Bootstrap",
+      "REST APIs",
       "EJS",
       "PostgreSQL",
       "JavaScript",
@@ -79,12 +80,19 @@ export default function WorkExperience() {
   const { isRetro } = useTheme();
 
   return (
-    <section id="experience" className="py-14 sm:py-18 md:py-20 bg-white dark:bg-gray-950 transition-colors duration-300">
+    <section
+      id="experience"
+      className="py-14 sm:py-18 md:py-20 bg-white dark:bg-gray-950 transition-colors duration-300"
+    >
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
           <span className="text-red-600 dark:text-red-500 font-semibold tracking-wider uppercase text-xs sm:text-sm flex items-center justify-center gap-1.5">
-            {isRetro ? <Sword className="w-4 h-4" /> : <Briefcase className="w-4 h-4" />}
+            {isRetro ? (
+              <Sword className="w-4 h-4" />
+            ) : (
+              <Briefcase className="w-4 h-4" />
+            )}
             {isRetro ? "★ COMPLETED DUNGEONS & BOSSES ★" : "Career Journey"}
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 dark:text-gray-100 mt-2">
