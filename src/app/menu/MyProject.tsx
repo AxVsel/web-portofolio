@@ -108,7 +108,7 @@ const allProjects: ProjectCardProps[] = [
       "Tailwind CSS",
       "Google AI Studio",
     ],
-    demoLink: "https://chatfilm-seven.vercel.app/",
+    demoLink: "https://chatfilm-seven-ten.vercel.app/",
   },
   {
     image: "/sibi.png",
