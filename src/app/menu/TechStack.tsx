@@ -2,6 +2,7 @@
 
 import LogoLoop from "@/components/LogoLoop";
 import { useTheme } from "@/components/ThemeProvider";
+import { useLanguage } from "@/components/LanguageProvider";
 import { playSelectSound } from "@/lib/retroAudio";
 import {
   SiReact,
@@ -32,8 +33,11 @@ import {
   SiPostman,
   SiFigma,
   SiVercel,
+  SiMysql,
+  SiBootstrap,
+  SiTrello,
 } from "react-icons/si";
-import { Code2, Server, BrainCircuit, Cpu, Wrench, Layers } from "lucide-react";
+import { Code2, Server, BrainCircuit, Cpu, Wrench, Layers, Database, Sliders } from "lucide-react";
 
 // Standalone Nuxt icon to avoid version discrepancy across different react-icons builds
 const NuxtIcon = () => (
@@ -93,6 +97,9 @@ const techLogos = [
   { node: <SiVercel />, title: "Vercel", href: "https://vercel.com" },
   { node: <SiGithub />, title: "GitHub", href: "https://github.com" },
   { node: <SiDocker />, title: "Docker", href: "https://www.docker.com" },
+  { node: <SiMysql />, title: "MySQL", href: "https://www.mysql.com" },
+  { node: <SiBootstrap />, title: "Bootstrap", href: "https://getbootstrap.com" },
+  { node: <SiTrello />, title: "Trello", href: "https://trello.com" },
   {
     node: <SiTailwindcss />,
     title: "Tailwind CSS",
@@ -103,44 +110,46 @@ const techLogos = [
 const skillCategories = [
   {
     name: "Programming Languages",
+    nameId: "Bahasa Pemrograman",
     retroName: "⚔️ WEAPONS (LANGUAGES)",
+    retroNameId: "⚔️ SENJATA (BAHASA)",
     icon: Code2,
     color:
       "text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/40 border-amber-200 dark:border-amber-800/60",
     skills: [
       "JavaScript",
       "TypeScript",
-      "Java",
       "PHP",
       "Python",
       "C",
       "C++",
-      "HTML5",
-      "CSS3",
+      "Visual Basic 6.0",
     ],
   },
   {
     name: "Frontend Development",
+    nameId: "Pengembangan Frontend",
     retroName: "🛡️ SHIELD & ARMOR (FRONTEND)",
+    retroNameId: "🛡️ PERISAI (FRONTEND)",
     icon: Layers,
     color:
       "text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/40 border-blue-200 dark:border-blue-800/60",
     skills: [
       "Vue.js",
-      "Nuxt.js (Nuxt 3)",
+      "Nuxt.js",
       "React.js",
       "Next.js",
       "Tailwind CSS",
       "Bootstrap",
-      "Pinia",
-      "Redux",
-      "Zustand",
-      "Apollo Client",
+      "HTML5",
+      "CSS3",
     ],
   },
   {
-    name: "Backend & Databases",
-    retroName: "⚡ MANA & POTIONS (BACKEND)",
+    name: "Backend Development",
+    nameId: "Pengembangan Backend",
+    retroName: "⚡ MANA & ENGINE (BACKEND)",
+    retroNameId: "⚡ MANA & MESIN (BACKEND)",
     icon: Server,
     color:
       "text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 border-emerald-200 dark:border-emerald-800/60",
@@ -151,17 +160,30 @@ const skillCategories = [
       "GraphQL",
       "REST API",
       "WebSocket",
+    ],
+  },
+  {
+    name: "Database Systems",
+    nameId: "Sistem Basis Data",
+    retroName: "💾 DATA VAULT (DATABASES)",
+    retroNameId: "💾 BRANKAS DATA (DATABASE)",
+    icon: Database,
+    color:
+      "text-cyan-600 dark:text-cyan-400 bg-cyan-50 dark:bg-cyan-950/40 border-cyan-200 dark:border-cyan-800/60",
+    skills: [
       "PostgreSQL",
       "MySQL",
-      "MariaDB",
       "Redis",
       "Supabase",
-      "Prisma ORM",
+      "MariaDB",
+      "Microsoft SQL Server",
     ],
   },
   {
     name: "AI & Machine Learning",
+    nameId: "AI & Machine Learning",
     retroName: "🔮 SPELLS & SUMMONS (AI/CV)",
+    retroNameId: "🔮 MANTRA & SUMMON (AI/CV)",
     icon: BrainCircuit,
     color:
       "text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-purple-950/40 border-purple-200 dark:border-purple-800/60",
@@ -171,53 +193,68 @@ const skillCategories = [
       "OpenCV",
       "CUDA",
       "Computer Vision",
-      "Object Detection",
-      "Google AI Studio",
+    ],
+  },
+  {
+    name: "State Management",
+    nameId: "Manajemen State",
+    retroName: "🌀 STATE MATRIX",
+    retroNameId: "🌀 MATRIKS STATE",
+    icon: Sliders,
+    color:
+      "text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/40 border-indigo-200 dark:border-indigo-800/60",
+    skills: [
+      "Pinia",
+      "Redux",
+      "Zustand",
     ],
   },
   {
     name: "Embedded Systems & IoT",
+    nameId: "Embedded Systems & IoT",
     retroName: "🤖 GOLEMS & CHIPS (IoT)",
+    retroNameId: "🤖 GOLEM & CHIP (IoT)",
     icon: Cpu,
     color:
       "text-rose-600 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/40 border-rose-200 dark:border-rose-800/60",
     skills: [
+      "ESP8266",
       "ESP32",
       "ESP32-CAM",
-      "ESP8266",
       "Arduino Uno",
       "Arduino Nano",
-      "Blynk IoT",
-      "AVR / Proteus",
-      "Hardware Troubleshooting",
     ],
   },
   {
-    name: "Tools, Cloud & DevOps",
-    retroName: "🧰 FORGE & CLOUD ARTIFACTS",
+    name: "Tools, Cloud & Deployment",
+    nameId: "Alat, Cloud & Deployment",
+    retroName: "🧰 FORGE & CLOUD REALM",
+    retroNameId: "🧰 BENGKEL & ALAM CLOUD",
     icon: Wrench,
     color:
       "text-slate-600 dark:text-slate-400 bg-slate-50 dark:bg-slate-900/60 border-slate-200 dark:border-slate-800",
     skills: [
-      "Git & GitHub",
-      "Docker",
+      "Git",
+      "GitHub",
       "Postman",
-      "Apidog",
       "Figma",
       "VS Code",
       "Google Colab",
+      "Trello",
       "N8N",
+      "Docker",
+      "Apidog",
+      "Antigravity",
       "Vercel",
       "Railway",
       "Ngrok",
-      "Antigravity",
-      "Trello",
     ],
   },
 ];
 
 export default function TechStack() {
   const { isRetro } = useTheme();
+  const { language } = useLanguage();
 
   return (
     <section
@@ -228,15 +265,31 @@ export default function TechStack() {
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
           <span className="text-red-600 dark:text-red-500 font-semibold tracking-wider uppercase text-xs sm:text-sm">
-            {isRetro ? "★ SKILL TREE & SPELLBOOK ★" : "Technical Capabilities"}
+            {language === "id"
+              ? isRetro
+                ? "★ POHON SKILL & BUKU MANTRA ★"
+                : "Kemampuan Teknis"
+              : isRetro
+              ? "★ SKILL TREE & SPELLBOOK ★"
+              : "Technical Capabilities"}
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 dark:text-gray-100 mt-2">
-            {isRetro ? "ITEM INVENTORY" : "Skills & Tech Stack"}
+            {language === "id"
+              ? isRetro
+                ? "INVENTARIS ITEM"
+                : "Keahlian & Stack Teknologi"
+              : isRetro
+              ? "ITEM INVENTORY"
+              : "Skills & Tech Stack"}
           </h2>
           <p className="text-gray-600 dark:text-gray-300 mt-2 sm:mt-3 text-xs sm:text-sm md:text-base">
-            {isRetro
+            {language === "id"
+              ? isRetro
+                ? "Kombinasi kemampuan legendaris dalam Full-Stack web, mantra AI/Computer Vision, dan gadget embedded IoT."
+                : "Keahlian komprehensif mencakup pengembangan web full-stack, AI/computer vision, dan hardware embedded IoT."
+              : isRetro
               ? "Equipped legendary abilities in Full-Stack development, AI/Computer Vision sorcery, and Embedded IoT hardware."
-              : "Comprehensive skill set across full-stack web development, AI/computer vision, and IoT embedded hardware."}
+              : "Comprehensive skill set across full-stack web development, AI/computer vision, and embedded IoT systems."}
           </p>
         </div>
 
@@ -263,7 +316,7 @@ export default function TechStack() {
         </div>
 
         {/* Categorized Skills Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6">
           {skillCategories.map((category, index) => {
             const Icon = category.icon;
             return (
@@ -283,7 +336,13 @@ export default function TechStack() {
                     <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
                   </div>
                   <h3 className="text-base sm:text-lg font-bold text-gray-900 dark:text-gray-100">
-                    {isRetro ? category.retroName : category.name}
+                    {language === "id"
+                      ? isRetro
+                        ? category.retroNameId
+                        : category.nameId
+                      : isRetro
+                      ? category.retroName
+                      : category.name}
                   </h3>
                 </div>
 

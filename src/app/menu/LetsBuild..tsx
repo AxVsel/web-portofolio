@@ -2,24 +2,35 @@
 
 import { Mail, Phone, MapPin, Send, MessageSquare } from "lucide-react";
 import { useTheme } from "@/components/ThemeProvider";
+import { useLanguage } from "@/components/LanguageProvider";
 import { playCoinSound } from "@/lib/retroAudio";
 
 export default function LetsBuild() {
   const { isRetro } = useTheme();
+  const { language } = useLanguage();
+  const isId = language === "id";
 
   return (
     <section id="contact" className="py-14 sm:py-18 md:py-20 bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900/60 dark:to-gray-950 border-t border-gray-200 dark:border-gray-800 transition-colors duration-300">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <span className="text-red-600 dark:text-red-500 font-semibold tracking-wider uppercase text-xs sm:text-sm">
-          {isRetro ? "★ INSERT COIN TO PLAY ★" : "Get in Touch"}
+          {isRetro
+            ? isId ? "★ MASUKKAN KOIN UNTUK MAIN ★" : "★ INSERT COIN TO PLAY ★"
+            : isId ? "Hubungi Saya" : "Get in Touch"}
         </span>
         <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-gray-900 dark:text-gray-100 font-extrabold mt-2 mb-3 sm:mb-4">
-          {isRetro ? "PRESS START TO CO-OP" : "Let's build something impactful together"}
+          {isRetro
+            ? isId ? "TEKAN START UNTUK CO-OP" : "PRESS START TO CO-OP"
+            : isId ? "Mari Bangun Sesuatu yang Berdampak Bersama" : "Let's build something impactful together"}
         </h2>
         <p className="text-gray-600 dark:text-gray-300 text-xs sm:text-sm md:text-base mb-8 sm:mb-10 max-w-xl mx-auto leading-relaxed">
           {isRetro
-            ? "Looking for a Party Member for your next Software Quest or IoT Raid? Send an invite transmission below!"
-            : "Open for software engineering roles, IoT hardware collaborations, full-stack development, or technical discussions. Feel free to reach out directly!"}
+            ? isId
+              ? "Mencari Anggota Party untuk Quest Software, Model AI, atau Ekspedisi IoT berikutnya? Kirim transmisi undangan di bawah!"
+              : "Looking for a Party Member for your next Software Quest, AI Model or IoT Raid? Send an invite transmission below!"
+            : isId
+              ? "Terbuka untuk posisi rekayasa perangkat lunak, inisiatif AI & computer vision, solusi web full-stack, serta kolaborasi sistem IoT embedded. Silakan hubungi langsung!"
+              : "Open for software engineering roles, AI & computer vision initiatives, full-stack web solutions, and IoT embedded collaborations. Feel free to reach out directly!"}
         </p>
 
         {/* Contact Badges Grid */}
@@ -44,7 +55,11 @@ export default function LetsBuild() {
               <Mail className="w-4 h-4 sm:w-5 sm:h-5" />
             </div>
             <div className="overflow-hidden min-w-0">
-              <p className="text-[11px] sm:text-xs text-gray-500 dark:text-gray-400 font-medium">Email Transmission</p>
+              <p className="text-[11px] sm:text-xs text-gray-500 dark:text-gray-400 font-medium">
+                {isRetro
+                  ? isId ? "TRANSMISI EMAIL" : "Email Transmission"
+                  : isId ? "Email Kontak" : "Email Transmission"}
+              </p>
               <p className="text-xs sm:text-sm font-bold text-gray-800 dark:text-gray-200 truncate">
                 yaumilaksah@gmail.com
               </p>
@@ -73,7 +88,11 @@ export default function LetsBuild() {
               <Phone className="w-4 h-4 sm:w-5 sm:h-5" />
             </div>
             <div className="overflow-hidden min-w-0">
-              <p className="text-[11px] sm:text-xs text-gray-500 dark:text-gray-400 font-medium">WhatsApp Comm</p>
+              <p className="text-[11px] sm:text-xs text-gray-500 dark:text-gray-400 font-medium">
+                {isRetro
+                  ? isId ? "KOMUNIKASI WA" : "WhatsApp Comm"
+                  : isId ? "WhatsApp / Telepon" : "WhatsApp Comm"}
+              </p>
               <p className="text-xs sm:text-sm font-bold text-gray-800 dark:text-gray-200 truncate">
                 (+62) 813-5513-0934
               </p>
@@ -98,9 +117,13 @@ export default function LetsBuild() {
               <MapPin className="w-4 h-4 sm:w-5 sm:h-5" />
             </div>
             <div className="overflow-hidden min-w-0">
-              <p className="text-[11px] sm:text-xs text-gray-500 dark:text-gray-400 font-medium">Base Territory</p>
+              <p className="text-[11px] sm:text-xs text-gray-500 dark:text-gray-400 font-medium">
+                {isRetro
+                  ? isId ? "WILAYAH BASIS" : "Base Territory"
+                  : isId ? "Lokasi / Domisili" : "Base Territory"}
+              </p>
               <p className="text-xs sm:text-sm font-bold text-gray-800 dark:text-gray-200 truncate">
-                South Tangerang, Banten
+                {isId ? "Tangerang Selatan, Banten" : "South Tangerang, Banten"}
               </p>
             </div>
           </div>
@@ -117,7 +140,10 @@ export default function LetsBuild() {
                 : "bg-red-600 hover:bg-red-700 text-white rounded-xl shadow-md shadow-red-600/25 hover:scale-102 active:scale-98"
             }`}
           >
-            <Send className="w-4 h-4" /> {isRetro ? "▶ SEND TRANSMISSION" : "Send an Email"}
+            <Send className="w-4 h-4" />{" "}
+            {isRetro
+              ? isId ? "▶ KIRIM TRANSMISI" : "▶ SEND TRANSMISSION"
+              : isId ? "Kirim Email" : "Send an Email"}
           </a>
           <a
             href="https://www.linkedin.com/in/yaumil-aksah/"
@@ -130,7 +156,9 @@ export default function LetsBuild() {
                 : "bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-100 rounded-xl border border-gray-300 dark:border-gray-700 shadow-sm hover:scale-102 active:scale-98"
             }`}
           >
-            {isRetro ? "GUILD LINKEDIN" : "Connect on LinkedIn"}
+            {isRetro
+              ? "GUILD LINKEDIN"
+              : isId ? "Terhubung di LinkedIn" : "Connect on LinkedIn"}
           </a>
         </div>
       </div>

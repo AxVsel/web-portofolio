@@ -1,18 +1,22 @@
 "use client";
 
-import { ExternalLink, Github, Cpu, Brain, Layers, Play } from "lucide-react";
+import { ExternalLink, Github, Cpu, Brain, Layers, Play, Monitor } from "lucide-react";
 import { useTheme } from "@/components/ThemeProvider";
+import { useLanguage } from "@/components/LanguageProvider";
 import { playCoinSound, playSelectSound } from "@/lib/retroAudio";
 
 export interface ProjectCardProps {
   image?: string;
   title: string;
   role?: string;
-  category: "Web & Full Stack" | "AI & Computer Vision" | "IoT & Embedded";
+  roleId?: string;
+  category: "Web & Full Stack" | "AI & Computer Vision" | "IoT & Embedded" | "Desktop & Other";
   year: string;
   description: string;
+  descriptionId?: string;
   techStack: string[];
   repositoryType?: string;
+  repositoryTypeId?: string;
   githubFrontend?: string;
   githubBackend?: string;
   githubOrg?: string;
@@ -24,11 +28,14 @@ export default function ProjectCard({
   image,
   title,
   role,
+  roleId,
   category,
   year,
   description,
+  descriptionId,
   techStack,
   repositoryType,
+  repositoryTypeId,
   githubFrontend,
   githubBackend,
   githubOrg,
@@ -36,6 +43,7 @@ export default function ProjectCard({
   demoLink,
 }: ProjectCardProps) {
   const { isRetro } = useTheme();
+  const { language } = useLanguage();
 
   const getCategoryBadge = () => {
     switch (category) {
@@ -50,6 +58,12 @@ export default function ProjectCard({
           icon: Cpu,
           className:
             "bg-rose-50 dark:bg-rose-950/50 text-rose-700 dark:text-rose-300 border-rose-200 dark:border-rose-800/60",
+        };
+      case "Desktop & Other":
+        return {
+          icon: Monitor,
+          className:
+            "bg-amber-50 dark:bg-amber-950/50 text-amber-700 dark:text-amber-300 border-amber-200 dark:border-amber-800/60",
         };
       default:
         return {
@@ -89,10 +103,25 @@ export default function ProjectCard({
             }`}
           />
         ) : (
-          <div className="flex flex-col items-center justify-center text-gray-400 dark:text-gray-500 p-4 text-center">
-            <CategoryIcon className="w-10 h-10 sm:w-12 sm:h-12 mb-2 text-red-500/70 dark:text-red-400/80" />
-            <span className="font-semibold text-xs sm:text-sm text-gray-600 dark:text-gray-400">
-              {category}
+          <div className="flex flex-col items-center justify-center text-gray-400 dark:text-gray-500 p-4 text-center w-full h-full bg-gradient-to-br from-gray-100/90 to-gray-200/90 dark:from-gray-850 dark:to-gray-900 select-none">
+            <div
+              className={`p-3 rounded-2xl mb-2 transition-transform group-hover:scale-105 ${
+                isRetro
+                  ? "bg-amber-300 dark:bg-gray-800 border-2 border-black dark:border-cyan-400 text-black dark:text-cyan-400 shadow-[2px_2px_0px_#000]"
+                  : "bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-sm"
+              }`}
+            >
+              <CategoryIcon className="w-7 h-7 sm:w-8 sm:h-8 text-red-600 dark:text-red-500" />
+            </div>
+            <span className="font-semibold text-xs sm:text-sm text-gray-700 dark:text-gray-300">
+              {category === "Desktop & Other" && language === "id"
+                ? "Desktop & Lainnya"
+                : category}
+            </span>
+            <span className="text-[11px] text-gray-400 dark:text-gray-500 mt-0.5">
+              {language === "id"
+                ? "Pratinjau Tidak Tersedia / Dummy Placeholder"
+                : "No Preview / Dummy Placeholder"}
             </span>
           </div>
         )}
@@ -120,11 +149,13 @@ export default function ProjectCard({
             }`}
           >
             <CategoryIcon className="w-2.5 h-2.5 sm:w-3 sm:h-3" />
-            {category}
+            {category === "Desktop & Other" && language === "id"
+              ? "Desktop & Lainnya"
+              : category}
           </span>
-          {role && (
+          {(role || roleId) && (
             <span className="text-[11px] sm:text-xs text-gray-500 dark:text-gray-400 font-medium truncate max-w-[50%]">
-              {role}
+              {language === "id" && roleId ? roleId : role}
             </span>
           )}
         </div>
@@ -136,7 +167,7 @@ export default function ProjectCard({
 
         {/* Description */}
         <p className="text-gray-600 dark:text-gray-300 text-xs sm:text-sm leading-relaxed mb-4 flex-grow">
-          {description}
+          {language === "id" && descriptionId ? descriptionId : description}
         </p>
 
         {/* Tech Stack */}
@@ -200,12 +231,14 @@ export default function ProjectCard({
                 onClick={() => isRetro && playCoinSound()}
                 className="inline-flex items-center gap-1 text-gray-700 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-400 font-medium hover:underline text-[11px] sm:text-xs"
               >
-                <Github className="w-3.5 h-3.5" /> Source Code
+                <Github className="w-3.5 h-3.5" /> {language === "id" ? "Kode Sumber" : "Source Code"}
               </a>
             )}
             {!githubFrontend && !githubBackend && !githubOrg && !githubLink && (
               <span className="text-gray-400 dark:text-gray-500 italic text-[11px] sm:text-xs">
-                {repositoryType || "Repository"}
+                {language === "id" && repositoryTypeId
+                  ? repositoryTypeId
+                  : repositoryType || (language === "id" ? "Repositori" : "Repository")}
               </span>
             )}
           </div>
@@ -223,7 +256,13 @@ export default function ProjectCard({
                   : "bg-red-600 hover:bg-red-700 text-white rounded-lg shadow-sm"
               }`}
             >
-              {isRetro ? "INSERT COIN / PLAY" : "Live Demo"}
+              {isRetro
+                ? language === "id"
+                  ? "MASUKKAN KOIN / MAIN"
+                  : "INSERT COIN / PLAY"
+                : language === "id"
+                ? "Demo Langsung"
+                : "Live Demo"}
               {isRetro ? <Play className="w-3 h-3 fill-current" /> : <ExternalLink className="w-3 h-3" />}
             </a>
           )}

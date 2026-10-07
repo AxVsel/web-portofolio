@@ -2,10 +2,12 @@
 
 import { Download, Mail, Sword, FileText } from "lucide-react";
 import { useTheme } from "@/components/ThemeProvider";
+import { useLanguage } from "@/components/LanguageProvider";
 import { playCoinSound } from "@/lib/retroAudio";
 
 export default function ButtonMessage() {
   const { isRetro } = useTheme();
+  const { language, cvPdfUrl, cvDownloadFileName } = useLanguage();
 
   return (
     <div className="flex flex-col sm:flex-row gap-2.5 sm:gap-3 w-full sm:w-auto">
@@ -22,13 +24,19 @@ export default function ButtonMessage() {
         }`}
       >
         {isRetro ? <Sword className="w-4 h-4 shrink-0" /> : <Mail className="w-4 h-4 shrink-0" />}
-        {isRetro ? "START QUEST" : "Let's Talk"}
+        {isRetro
+          ? language === "id"
+            ? "MULAI QUEST"
+            : "START QUEST"
+          : language === "id"
+          ? "Hubungi Saya"
+          : "Let's Talk"}
       </a>
 
       {/* Download CV Button */}
       <a
-        href="/yaumilCV.pdf"
-        download="Muh_Yaumil_Aksah_Hamid_CV.pdf"
+        href={cvPdfUrl}
+        download={cvDownloadFileName}
         onClick={() => isRetro && playCoinSound()}
         className={`flex items-center justify-center gap-2 font-medium py-2 sm:py-2.5 px-4 sm:px-5 transition-all duration-200 text-xs sm:text-sm md:text-base w-full sm:w-auto ${
           isRetro
@@ -41,7 +49,13 @@ export default function ButtonMessage() {
         ) : (
           <Download className="w-4 h-4 text-gray-700 dark:text-gray-300 shrink-0" />
         )}
-        {isRetro ? "ITEM SCROLL (CV)" : "Download CV"}
+        {isRetro
+          ? language === "id"
+            ? "GULUNGAN CV"
+            : "ITEM SCROLL (CV)"
+          : language === "id"
+          ? "Unduh CV"
+          : "Download CV"}
       </a>
     </div>
   );

@@ -4,19 +4,72 @@ import { useState } from "react";
 import ButtonMessage from "../components/ButtonMessage";
 import ThemeToggle from "@/components/ThemeToggle";
 import RetroToggle from "@/components/RetroToggle";
+import LanguageToggle from "@/components/LanguageToggle";
 import { Menu, X } from "lucide-react";
 import { useTheme } from "@/components/ThemeProvider";
+import { useLanguage } from "@/components/LanguageProvider";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const { isRetro } = useTheme();
+  const { language } = useLanguage();
 
   const navLinks = [
-    { href: "#TechStack", label: isRetro ? "⚔️ INVENTORY" : "Tech Stack" },
-    { href: "#experience", label: isRetro ? "📜 QUESTS" : "Experience" },
-    { href: "#MyProject", label: isRetro ? "🕹️ ARCADE" : "Projects" },
-    { href: "#education", label: isRetro ? "🏆 GUILD" : "Education" },
-    { href: "#contact", label: isRetro ? "💬 START" : "Contact" },
+    {
+      href: "#TechStack",
+      label:
+        language === "id"
+          ? isRetro
+            ? "⚔️ INVENTARIS"
+            : "Keahlian"
+          : isRetro
+          ? "⚔️ INVENTORY"
+          : "Tech Stack",
+    },
+    {
+      href: "#experience",
+      label:
+        language === "id"
+          ? isRetro
+            ? "📜 MISI"
+            : "Pengalaman"
+          : isRetro
+          ? "📜 QUESTS"
+          : "Experience",
+    },
+    {
+      href: "#MyProject",
+      label:
+        language === "id"
+          ? isRetro
+            ? "🕹️ ARCADE"
+            : "Proyek"
+          : isRetro
+          ? "🕹️ ARCADE"
+          : "Projects",
+    },
+    {
+      href: "#education",
+      label:
+        language === "id"
+          ? isRetro
+            ? "🏆 GUILD"
+            : "Pendidikan"
+          : isRetro
+          ? "🏆 GUILD"
+          : "Education",
+    },
+    {
+      href: "#contact",
+      label:
+        language === "id"
+          ? isRetro
+            ? "💬 KONTAK"
+            : "Kontak"
+          : isRetro
+          ? "💬 START"
+          : "Contact",
+    },
   ];
 
   return (
@@ -35,7 +88,7 @@ export default function Header() {
         </a>
 
         {/* Desktop & Tablet Navigation */}
-        <nav className="hidden md:flex items-center gap-3 lg:gap-5">
+        <nav className="hidden md:flex items-center gap-3 lg:gap-4">
           {navLinks.map((link) => (
             <a
               key={link.href}
@@ -45,6 +98,9 @@ export default function Header() {
               {link.label}
             </a>
           ))}
+
+          {/* Language Switcher */}
+          <LanguageToggle />
 
           {/* 8-Bit Arcade Mode Switch */}
           <RetroToggle />
@@ -57,6 +113,7 @@ export default function Header() {
 
         {/* Mobile Navigation Controls */}
         <div className="md:hidden flex items-center gap-1.5">
+          <LanguageToggle />
           <RetroToggle />
           <ThemeToggle />
           <button

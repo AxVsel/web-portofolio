@@ -2,10 +2,13 @@
 
 import { Github, Linkedin, Mail, Heart } from "lucide-react";
 import { useTheme } from "@/components/ThemeProvider";
+import { useLanguage } from "@/components/LanguageProvider";
 import { playCoinSound } from "@/lib/retroAudio";
 
 export default function Footer() {
   const { isRetro } = useTheme();
+  const { language } = useLanguage();
+  const isId = language === "id";
 
   return (
     <footer className="bg-white dark:bg-gray-950 border-t border-gray-200 dark:border-gray-800 text-gray-600 dark:text-gray-400 py-6 sm:py-8 transition-colors duration-300">
@@ -16,7 +19,9 @@ export default function Footer() {
             {isRetro ? "★ DEV: MUH YAUMIL AKSAH HAMID ★" : "Muh Yaumil Aksah Hamid"}
           </p>
           <p className="text-[11px] sm:text-xs text-gray-500 dark:text-gray-400 mt-0.5">
-            {isRetro ? "HIGH SCORE: 999,990 PTS" : "Software Engineer & Hardware Engineer"}
+            {isRetro
+              ? isId ? "SKOR TERTINGGI: 999.990 PTS" : "HIGH SCORE: 999,990 PTS"
+              : isId ? "Software Engineer | AI & IoT Developer" : "Software Engineer | AI & IoT Developer"}
           </p>
         </div>
 
@@ -24,12 +29,12 @@ export default function Footer() {
         <p className="text-[11px] sm:text-xs text-center text-gray-500 dark:text-gray-400">
           {isRetro ? (
             <span className="text-amber-500 dark:text-cyan-400 font-bold">
-              © {new Date().getFullYear()} THANKS FOR PLAYING!
+              © {new Date().getFullYear()} {isId ? "TERIMA KASIH TELAH BERKUNJUNG!" : "THANKS FOR PLAYING!"}
             </span>
           ) : (
             <>
-              © {new Date().getFullYear()} Designed &amp; built with{" "}
-              <span className="text-red-500">❤️</span> by Yaumil Aksah.
+              © {new Date().getFullYear()} {isId ? "Dirancang & dibangun dengan " : "Designed & built with "}
+              <span className="text-red-500">❤️</span> {isId ? "oleh Yaumil Aksah." : "by Yaumil Aksah."}
             </>
           )}
         </p>
