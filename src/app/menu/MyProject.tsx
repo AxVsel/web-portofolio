@@ -9,6 +9,31 @@ import { playSelectSound, playCoinSound } from "@/lib/retroAudio";
 
 const allProjects: ProjectCardProps[] = [
   {
+    image: "/aiRadiology.png",
+    title: "AI-Powered Thoracic Medical Imaging Analysis",
+    role: "AI Engineer",
+    roleId: "AI Engineer",
+    category: "AI & Computer Vision",
+    year: "2026 - Present",
+    description:
+      "Developing an AI-assisted medical imaging application using Ultralytics YOLO26 and deep learning for thoracic radiological image analysis. Preparing and manually annotating medical imaging datasets using Roboflow for 13 categories of radiological findings (Pneumonia, Cardiomegaly, Pneumothorax, etc.), model training, and integrating into a Vue.js application for real-time inference and prediction visualization.",
+    descriptionId:
+      "Mengembangkan aplikasi analisis citra medis toraks berbantuan AI menggunakan Ultralytics YOLO26 dan deep learning. Menyiapkan dan menganotasi dataset citra medis dengan Roboflow untuk 13 kategori temuan radiologi (Pneumonia, Kardiomegali, Pneumotoraks, dll.), pelatihan model, serta integrasi ke aplikasi Vue.js untuk inferensi AI dan visualisasi prediksi real-time.",
+    techStack: [
+      "Python",
+      "PyTorch",
+      "YOLO26",
+      "Roboflow",
+      "Computer Vision",
+      "Deep Learning",
+      "Vue.js",
+      "GraphQL",
+      "Apollo Client",
+    ],
+    repositoryType: "Enterprise Healthcare AI (PT Unisia Tera Medika)",
+    repositoryTypeId: "Enterprise Healthcare AI (PT Unisia Tera Medika)",
+  },
+  {
     image: "/experienceUnisia.png",
     title: "Hospital Information System (SIMRS)",
     role: "Software Engineer",

@@ -58,10 +58,10 @@ export default function Intro() {
           <p className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-gray-700 dark:text-gray-300">
             {isRetro ? (
               <span className="text-amber-500 dark:text-cyan-400">
-                [LVL 25] SOFTWARE ENGINEER &amp; AI / IOT DEVELOPER
+                [LVL 26] SOFTWARE ENGINEER &amp; AI ENGINEER
               </span>
             ) : (
-              <>Software Engineer <span className="text-red-600 dark:text-red-500">|</span> AI &amp; IoT Developer</>
+              <>Software Engineer <span className="text-red-600 dark:text-red-500">|</span> AI Engineer</>
             )}
           </p>
 
@@ -91,7 +91,7 @@ export default function Intro() {
               <div className="pt-1 flex flex-wrap justify-between text-[11px] text-yellow-400 border-t border-gray-800">
                 <span>⚔️ ATK: 99 (Full-Stack &amp; Backend)</span>
                 <span>🛡️ DEF: 95 (Clean Architecture)</span>
-                <span>⚡ SPEED: 92 (AI &amp; Real-Time IoT)</span>
+                <span>⚡ SPEED: 95 (Computer Vision &amp; AI)</span>
               </div>
             </div>
           )}
@@ -99,8 +99,8 @@ export default function Intro() {
           {/* Summary */}
           <p className="text-xs sm:text-sm md:text-base text-gray-600 dark:text-gray-300 leading-relaxed text-justify md:text-left">
             {language === "id"
-              ? "Software Engineer dan AI & IoT Developer yang berorientasi pada hasil dengan pengalaman langsung dalam membangun aplikasi web end-to-end terukur, sistem computer vision real-time, dan solusi hardware terintegrasi. Mahir dalam teknologi frontend/backend modern, framework machine learning (YOLOv5, PyTorch), dan cloud deployment. Mampu mentransformasikan kebutuhan teknis yang kompleks menjadi produk digital berkinerja tinggi yang berpusat pada pengguna."
-              : "Results-driven Software Engineer and AI & IoT Developer with hands-on experience in building scalable end-to-end web applications, real-time computer vision systems, and integrated hardware solutions. Proficient in modern frontend/backend stacks, machine learning frameworks (YOLOv5, PyTorch), and cloud deployment. Adept at transforming complex technical requirements into user-focused, high-performance digital products."}
+              ? "Software Engineer dan AI Engineer dengan pengalaman langsung dalam pengembangan full-stack, artificial intelligence, computer vision, dan deep learning di sektor teknologi kesehatan. Berpengalaman mengembangkan Sistem Informasi Manajemen Rumah Sakit (SIMRS) dan aplikasi medical imaging berbasis AI menggunakan YOLO26, PyTorch, dan Roboflow, mulai dari persiapan dataset hingga integrasi ke aplikasi web modern."
+              : "Software Engineer and AI Engineer with hands-on experience in full-stack development, artificial intelligence, computer vision, and deep learning within the healthcare technology sector. Experienced in developing Hospital Information Systems (SIMRS) and AI-powered medical imaging applications using YOLO26, PyTorch, and Roboflow, covering end-to-end dataset preparation, model training, and modern web application integration."}
           </p>
 
           {/* Location */}
